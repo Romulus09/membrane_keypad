@@ -68,6 +68,20 @@ char detectar_tecla(){
 
     int rows[4] = {ROW1, ROW2, ROW3, ROW4};
     int cols[4] = {COL1, COL2, COL3, COL4};
+
+    for (int i = 0; i < 4; i++) {
+        gpio_put(rows[i], 0);
+        for (int j = 0; j < 4; j++) {
+            if (gpio_get(cols[j]) == 0) {
+                sleep_ms(200);
+                gpio_put(rows[i], 1);
+                return matriz[i][j];
+            }
+        }
+        gpio_put(rows[i], 1);
+    }
+
+    return '\0';
 }
 
 int main()
