@@ -18,6 +18,29 @@
 
 #define BUZZER 21
 
+void configurar_gpio() {
+    
+    //Inicializando os pinos
+    gpio_init(ROW1);
+    gpio_init(ROW2);
+    gpio_init(ROW3);
+    gpio_init(ROW4);
+    
+    //Inicializando colunas
+    gpio_init(COL1);
+    gpio_init(COL2);
+    gpio_init(COL3);
+    gpio_init(COL4);
+
+   //Inicializando Leds
+    gpio_init(LED1_G);
+    gpio_init(LED1_B);
+    gpio_init(LED1_R);
+    //Inicializando Buzzer
+    gpio_init(BUZZER);
+
+}
+
 int main()
 {
     stdio_init_all();
