@@ -57,6 +57,19 @@ void configurar_gpio() {
     gpio_set_dir(BUZZER, GPIO_OUT);
 }
 
+// Função para detecção de tecla
+char detectar_tecla(){
+    const char matriz[4][4] = {
+        {'1', '2', '3', 'A'},
+        {'4', '5', '6', 'B'},
+        {'7', '8', '9', 'C'},
+        {'*', '0', '#', 'D'}
+    };
+
+    int rows[4] = {ROW1, ROW2, ROW3, ROW4};
+    int cols[4] = {COL1, COL2, COL3, COL4};
+}
+
 int main()
 {
     stdio_init_all();
