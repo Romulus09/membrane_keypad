@@ -39,9 +39,37 @@ void configurar_gpio() {
     //Inicializando Buzzer
     gpio_init(BUZZER);
 
+    //Configurando direção entrada/saída dos pinos linha
+    gpio_set_dir(ROW1, GPIO_OUT);
+    gpio_set_dir(ROW2, GPIO_OUT);
+    gpio_set_dir(ROW3, GPIO_OUT);
+    gpio_set_dir(ROW4, GPIO_OUT);
+
+    //Configurando direção entrada/saída dos pinos coluna
+    gpio_set_dir(COL1, GPIO_IN);
+    gpio_set_dir(COL2, GPIO_IN);
+    gpio_set_dir(COL3, GPIO_IN);
+    gpio_set_dir(COL4, GPIO_IN);
+
+    //
+    gpio_pull_up(COL1);
+    gpio_pull_up(COL2);
+    gpio_pull_up(COL3);
+    gpio_pull_up(COL4);
+
+    //configurando direção entrada/saída dos pinos LED'S (verde,azul,vermelho)
+    gpio_set_dir(LED1_G, GPIO_OUT);
+    gpio_set_dir(LED1_B, GPIO_OUT);
+    gpio_set_dir(LED1_R, GPIO_OUT);
+
+    //configurando direção entrada/saída do pino buzzer
+    gpio_set_dir(BUZZER, GPIO_OUT);
+
 }
 
 int main()
 {
     stdio_init_all();
+    configurar_gpio();
+
 }
