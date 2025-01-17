@@ -83,7 +83,23 @@ char detectar_tecla(){
 
     return '\0';
 }
+void acionar_led_ou_buzzer(char tecla) {
+    switch (tecla) {
+        case 'A':
+            gpio_put(LED1_R, 1);
+            sleep_ms(500);
+            gpio_put(LED1_R, 0);
+            break;
+        case 'B':
+            gpio_put(LED1_B, 1);
+            sleep_ms(500);
+            gpio_put(LED1_B, 0);
+            break;
 
+        default:
+            break;
+    }
+}
 int main()
 {
     stdio_init_all();
