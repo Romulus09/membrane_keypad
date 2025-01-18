@@ -5,7 +5,7 @@ Este projeto demonstra como integrar um teclado matricial 4x4 com um Raspberry P
 
 ## Link do Vídeo Ensaio
 
-[Demonstração de Funcionamento do projeto](https://www.youtube.com/watch?v=KdWpkYnVu8g)
+[Demonstração de Funcionamento do projeto](https://www.youtube.com/watch?v=-MSzEE1RgBY)
 
 ## Descrição
 
