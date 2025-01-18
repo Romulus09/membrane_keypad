@@ -19,40 +19,37 @@
 
 #define BUZZER 21
 
+// Vetores com os pinos das linhas e colunas
+const int rows[4] = {ROW1, ROW2, ROW3, ROW4};
+const int cols[4] = {COL1, COL2, COL3, COL4};
+
 // Função para configurar os pinos GPIO
 void configurar_gpio() {
+    // Configura as linhas como saída
+    for (int i = 0; i < 4; i++) {
+        gpio_init(rows[i]);
+        gpio_set_dir(rows[i], GPIO_OUT);
+        gpio_put(rows[i], 1);
+    }
 
-    gpio_init(ROW1);
-    gpio_init(ROW2);
-    gpio_init(ROW3);
-    gpio_init(ROW4);
-    gpio_set_dir(ROW1, GPIO_OUT);
-    gpio_set_dir(ROW2, GPIO_OUT);
-    gpio_set_dir(ROW3, GPIO_OUT);
-    gpio_set_dir(ROW4, GPIO_OUT);
+    // Configura as colunas como entrada com pull-up
+    for (int i = 0; i < 4; i++) {
+        gpio_init(cols[i]);
+        gpio_set_dir(cols[i], GPIO_IN);
+        gpio_pull_up(cols[i]);
+    }
 
-    gpio_init(COL1);
-    gpio_init(COL2);
-    gpio_init(COL3);
-    gpio_init(COL4);
-    gpio_set_dir(COL1, GPIO_IN);
-    gpio_set_dir(COL2, GPIO_IN);
-    gpio_set_dir(COL3, GPIO_IN);
-    gpio_set_dir(COL4, GPIO_IN);
-    gpio_pull_up(COL1);
-    gpio_pull_up(COL2);
-    gpio_pull_up(COL3);
-    gpio_pull_up(COL4);
+    // Configura os LEDs como saída
+    const int leds[] = {LED1_R, LED1_G, LED1_B};
+    for (int i = 0; i < 3; i++) {
+        gpio_init(leds[i]);
+        gpio_set_dir(leds[i], GPIO_OUT);
+    }
 
-    gpio_init(LED1_G);
-    gpio_init(LED1_B);
-    gpio_init(LED1_R);
-    gpio_set_dir(LED1_G, GPIO_OUT);
-    gpio_set_dir(LED1_B, GPIO_OUT);
-    gpio_set_dir(LED1_R, GPIO_OUT);
-
+    // Configura o buzzer como saída
     gpio_init(BUZZER);
     gpio_set_dir(BUZZER, GPIO_OUT);
+    gpio_put(BUZZER, 0);
 }
 
 // Função para detectar qual tecla foi pressionada no teclado matricial
@@ -63,10 +60,6 @@ char detectar_tecla() {
         {'7', '8', '9', 'C'},
         {'*', '0', '#', 'D'}
     };
-
-    int rows[4] = {ROW1, ROW2, ROW3, ROW4};
-    int cols[4] = {COL1, COL2, COL3, COL4};
-
     // Varre as linhas e colunas para detectar a tecla pressionada
     for (int i = 0; i < 4; i++) {
         gpio_put(rows[i], 0);
