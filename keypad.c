@@ -83,6 +83,8 @@ char detectar_tecla(){
 
     return '\0';
 }
+
+// Função para acionar LED ou Buzzer com base na tecla pressionada
 void acionar_led_ou_buzzer(char tecla) {
     switch (tecla) {
         case 'A':
@@ -95,11 +97,27 @@ void acionar_led_ou_buzzer(char tecla) {
             sleep_ms(500);
             gpio_put(LED1_B, 0);
             break;
-
+        case 'C':
+            gpio_put(LED1_G, 1);
+            sleep_ms(500);
+            gpio_put(LED1_G, 0);
+            break;
+        case '#':
+            break;
+        case 'D':
+            gpio_put(LED1_R, 1);
+            gpio_put(LED1_G, 1);
+            gpio_put(LED1_B, 1);
+            sleep_ms(500);
+            gpio_put(LED1_R, 0);
+            gpio_put(LED1_G, 0);
+            gpio_put(LED1_B, 0);
+            break;
         default:
             break;
     }
 }
+
 int main()
 {
     stdio_init_all();
