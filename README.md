@@ -3,6 +3,10 @@
 
 Este projeto demonstra como integrar um teclado matricial 4x4 com um Raspberry Pi Pico W para detectar entradas de teclas e acionar LEDs RGB e um buzzer com base nas teclas pressionadas.
 
+## Link do Vídeo Ensaio
+
+[Demonstração de Funcionamento do projeto](https://www.youtube.com/watch?v=KdWpkYnVu8g)
+
 ## Descrição
 
 O projeto utiliza um teclado matricial 4x4 conectado ao Raspberry Pi Pico W para capturar entradas do usuário. Dependendo da tecla pressionada, diferentes LEDs RGB são acionados ou um buzzer emite um som específico. 
